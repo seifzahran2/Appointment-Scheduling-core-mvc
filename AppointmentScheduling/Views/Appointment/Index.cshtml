@@ -1,0 +1,31 @@
+﻿<style>
+    body {
+        color: #000;
+        overflow-x: hidden;
+        background-image: url(/img/1.png);
+        background-repeat: no-repeat;
+        background-size: 100% 91%
+    }  
+    .fc-direction-ltr {
+        height: 30rem;
+        background-color: #6dc7a3;
+        margin-top:1rem
+    }
+      
+</style>
+
+<div class="row">
+    <div class="container" style="margin-top:6rem">
+        @if(User.IsInRole(AppointmentScheduling.Utility.Helper.Admin))
+            {
+                <div class="form-group row col-2" id="divDoctorList">
+                    <label>Select Doctor</label>
+                    @Html.DropDownList("doctorId",new SelectList(ViewBag.DoctorsList, "Id","Name"),
+                    new { @class = "form-control select2"})
+                </div>
+            }
+        <div id="calendar"></div>
+    </div>
+</div>
+
+<partial name="_AddEditAppointment" />
